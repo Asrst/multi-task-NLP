@@ -4,5 +4,5 @@ transform1:
     - coNLL_train.txt
     - coNLL_testa.txt
     - coNLL_testb.txt
-  read_dir: coNLL_data
-  save_dir: ../../data
+  read_dir: multi-task-NLP/examples/gmb_ner_pos/gmb_data
+  save_dir: data
