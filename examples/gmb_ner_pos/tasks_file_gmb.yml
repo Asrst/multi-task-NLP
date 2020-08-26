@@ -1,4 +1,4 @@
-conllner:
+gmb_ner:
   model_type: BERT
   config_name: bert-base-uncased
   dropout_prob: 0.2
@@ -14,7 +14,7 @@ conllner:
   - ner_val.tsv
   - ner_test.tsv
 
-conllpos:
+gmb_pos:
     model_type: BERT
     config_name: bert-base-uncased
     dropout_prob: 0.2
