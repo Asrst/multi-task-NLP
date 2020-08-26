@@ -302,6 +302,17 @@ def main():
                 savePath = os.path.join(args.out_dir, 'multi_task_model_{}_{}.pt'.format(epoch, model.globalStep))  
                 model.save_multi_task_model(savePath)
 
+            # check after each epoch - to limit the checkpoints saved, remove checkpoints if beyond limit
+            if args.limit_save > 0:
+                stepCkpMap = {int(ckp.rstrip('.pt').split('_')[-1]) : ckp for ckp in os.listdir(args.out_dir) if ckp.endswith('.pt') }
+                
+                #sorting based on global step
+                stepToDel = sorted(list(stepCkpMap.keys()))[:-args.limit_save]
+
+                for ckpStep in stepToDel:
+                    os.remove(os.path.join(args.out_dir, stepCkpMap[ckpStep]))
+                    logger.info('Removing checkpoint {}'.format(stepCkpMap[ckpStep]))
+
             if args.eval_while_train:
                 logger.info("\nRunning Evaluation on dev...")
                 with torch.no_grad():
