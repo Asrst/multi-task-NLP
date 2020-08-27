@@ -1,6 +1,6 @@
 gmbner:
-  model_type: ALBERT
-  config_name: albert-xlarge-v2
+  model_type: ROBERTA
+  config_name: roberta-base
   dropout_prob: 0.1
   label_map_or_file: data/ner_train_label_map.joblib
   metrics:
@@ -15,8 +15,8 @@ gmbner:
   - ner_test.tsv
 
 gmbpos:
-    model_type: ALBERT
-    config_name: albert-xlarge-v2
+    model_type: ROBERTA
+    config_name: roberta-base
     dropout_prob: 0.1
     label_map_or_file: data/pos_train_label_map.joblib
     metrics:
