@@ -39,8 +39,8 @@ def load_pred_file(dataPath, taskType, hasColNames):
             pass
             
         elif taskType == TaskType.NER:
-            true_labels.append(liter_eval(cols[-1]))
-            predictions.append(liter_eval(cols[-2]))
+            true_labels.append(literal_eval(cols[-1]))
+            predictions.append(literal_eval(cols[-2]))
         
         else:
             raise ValueError(taskType)
