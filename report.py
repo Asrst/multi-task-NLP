@@ -55,7 +55,7 @@ def main():
                         help = "task name for which report is required.")
     parser.add_argument('--pred_file_path', type = str, required=True,
                         help="path to the saved prediction file")
-    parser.add_argument('--hasColNames', default = False, action = 'store_true',
+    parser.add_argument('--hasColNames', type = bool, default = True,
                         help="if pred_file provided is having column names to skip in first row")
                         
 
