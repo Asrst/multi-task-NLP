@@ -76,15 +76,15 @@ def main():
     elif taskType == TaskType.NER:
         from seqeval.metrics import classification_report
         seq_f1 = seqeval_f1_score(true, preds)
-        print('Seq_f1_score on {}:{}'.format(taskName, seq_f1))
+        print('Seq_f1_score on {}:{}'.format(args.task_name, seq_f1))
 
         seq_precision = seqeval_precision(true, preds)
-        print('Seq_f1_score on {}:{}'.format(taskName, seq_precision))
+        print('Seq_f1_score on {}:{}'.format(args.task_name, seq_precision))
 
         seq_recall = seqeval_recall(true, preds)
-        print('Seq_f1_score on {}:{}'.format(taskName, seq_recall))
+        print('Seq_f1_score on {}:{}'.format(args.task_name, seq_recall))
 
-        print('\nClassifiction Report on {}:'.format(taskName))
+        print('\nClassifiction Report on {}:'.format(args.task_name))
         print(classification_report(true,preds))        
     else:
         raise ValueError(taskType)
