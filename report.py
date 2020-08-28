@@ -27,7 +27,7 @@ def load_pred_file(dataPath, taskType, hasColNames):
     predictions = []
     f = open(dataPath)
     for i, line in enumerate(f):
-        if hasColNamesa and i < 1:
+        if hasColNames and i < 1:
             continue
         cols = line.strip("\n").split("\t")
         assert len(cols) == 3, "Data not in required format, should have 3 coloumns 'uid', 'prediciton', 'label'"
