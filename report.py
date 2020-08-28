@@ -49,6 +49,8 @@ def load_pred_file(dataPath, taskType, hasColNames):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--task_file', type=str, required = True,
+                        help = "path to task file.")
     parser.add_argument('--task_name', type=str, required = True,
                         help = "task name for which report is required.")
     parser.add_argument('--pred_file_path', type = str, required=True,
@@ -62,7 +64,8 @@ def main():
     allParams = vars(args)
     assert os.path.exists(args.pred_file_path), "prediction tsv file not present at {}".format(args.pred_file_path)
 
-    taskType = taskParamsModel.taskTypeMap[args.task_name]
+    tasks = TasksParam(args.task_file)
+    taskType = tasks.taskTypeMap[args.task_name]
     true, preds = load_pred_file(args.pred_file_path, taskType, args.hasColNames)
 
     if taskType == TaskType.SingleSenClassification:
