@@ -53,15 +53,18 @@ def main():
                         help = "task name for which report is required.")
     parser.add_argument('--pred_file_path', type = str, required=True,
                         help="path to the saved prediction file")
+    parser.add_argument('--hasColNames', default = False, action = 'store_true',
+                        help="if pred_file provided is having column names to skip in first row")
+                        
 
     args = parser.parse_args()
 
     allParams = vars(args)
     assert os.path.exists(args.pred_file_path), "prediction tsv file not present at {}".format(args.pred_file_path)
 
-    true, preds = load_pred_file(args.pred_file_path)
-
     taskType = taskParamsModel.taskTypeMap[args.task_name]
+    true, preds = load_pred_file(args.pred_file_path, taskType, args.hasColNames)
+
     if taskType == TaskType.SingleSenClassification:
             pass
     elif taskType == TaskType.SentencePairClassification:
