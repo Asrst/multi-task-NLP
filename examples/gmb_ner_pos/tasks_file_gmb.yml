@@ -1,7 +1,6 @@
 gmbner:
-  model_type: ROBERTA
-  config_name: roberta-base
-  dropout_prob: 0.1
+  model_type: BERT
+  config_name: bert-base-cased
   label_map_or_file: data/ner_train_label_map.joblib
   metrics:
   - seqeval_f1_score
@@ -15,9 +14,9 @@ gmbner:
   - ner_test.tsv
 
 gmbpos:
-    model_type: ROBERTA
-    config_name: roberta-base
-    dropout_prob: 0.1
+    model_type: BERT
+    config_name: bert-base-cased
+    dropout_prob: 0.2
     label_map_or_file: data/pos_train_label_map.joblib
     metrics:
     - seqeval_f1_score
